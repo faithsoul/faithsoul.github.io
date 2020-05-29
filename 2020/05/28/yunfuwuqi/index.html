@@ -463,7 +463,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    997
+                    945
                 </div>
                 
 
@@ -491,86 +491,133 @@
 <h3 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h3><h4 id="2-1-连接到服务器"><a href="#2-1-连接到服务器" class="headerlink" title="2.1 连接到服务器"></a>2.1 连接到服务器</h4><p>打开WinSCP和SecureCRT8.0输入自己的hostname(就是你的公网IP)和username(默认一般为root)，和自己的密码。(这些都可以在阿里云ECS控制台查看)</p>
 <p><img src="https://wx1.sbimg.cn/2020/05/29/44.png" alt="44.png"></p>
 <h4 id="2-2-安装gcc-gcc-c"><a href="#2-2-安装gcc-gcc-c" class="headerlink" title="2.2 安装gcc gcc-c++"></a>2.2 安装gcc gcc-c++</h4><p>当你成功登陆，SecureCRT8.0会显示Welcome to Alibaba Cloud Elastic Compute Service !说明你成功连接上了你的服务器了，之后就需要在SecureCRT8.0中输入指令了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++</span><br></pre></td></tr></table></figure>
+<pre><code>yum install -y gcc gcc-c++</code></pre><h4 id="2-3安装PCRE"><a href="#2-3安装PCRE" class="headerlink" title="2.3安装PCRE"></a>2.3安装PCRE</h4><p>每次键入1条指令</p>
+<pre><code>cd /usr/local/
 
+wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz
 
+tar -xvf pcre-8.37.tar.gz
 
-<h4 id="2-3安装PCRE"><a href="#2-3安装PCRE" class="headerlink" title="2.3安装PCRE"></a>2.3安装PCRE</h4><p>每次键入1条指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;</span><br><span class="line"></span><br><span class="line">wget http:&#x2F;&#x2F;downloads.sourceforge.net&#x2F;project&#x2F;pcre&#x2F;pcre&#x2F;8.37&#x2F;pcre-8.37.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf pcre-8.37.tar.gz</span><br><span class="line"></span><br><span class="line">cd pcre-8.37</span><br><span class="line"></span><br><span class="line">.&#x2F;configure</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">pcre-config --version</span><br></pre></td></tr></table></figure>
+cd pcre-8.37
 
+./configure
 
+make &amp;&amp; make install
 
-<h4 id="2-4安装-openssl-、zlib-、-gcc-依赖"><a href="#2-4安装-openssl-、zlib-、-gcc-依赖" class="headerlink" title="2.4安装 openssl 、zlib 、 gcc 依赖"></a>2.4安装 openssl 、zlib 、 gcc 依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel</span><br></pre></td></tr></table></figure>
+pcre-config --version</code></pre><h4 id="2-4安装-openssl-、zlib-、-gcc-依赖"><a href="#2-4安装-openssl-、zlib-、-gcc-依赖" class="headerlink" title="2.4安装 openssl 、zlib 、 gcc 依赖"></a>2.4安装 openssl 、zlib 、 gcc 依赖</h4><pre><code>yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel</code></pre><h4 id="2-5安装Nginx"><a href="#2-5安装Nginx" class="headerlink" title="2.5安装Nginx"></a>2.5安装Nginx</h4><p>每次键入一条指令</p>
+<pre><code>cd /usr/local/
 
+wget http://nginx.org/download/nginx-1.17.9.tar.gz
 
+tar -xvf nginx-1.17.9.tar.gz
 
-<h4 id="2-5安装Nginx"><a href="#2-5安装Nginx" class="headerlink" title="2.5安装Nginx"></a>2.5安装Nginx</h4><p>每次键入一条指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;</span><br><span class="line"></span><br><span class="line">wget http:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.17.9.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf nginx-1.17.9.tar.gz</span><br><span class="line"></span><br><span class="line">cd nginx-1.17.9</span><br><span class="line"></span><br><span class="line">.&#x2F;configure</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+cd nginx-1.17.9
 
+./configure
 
-
-<h4 id="2-6启动Nginx"><a href="#2-6启动Nginx" class="headerlink" title="2.6启动Nginx"></a>2.6启动Nginx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx</span><br></pre></td></tr></table></figure>
-
-<p>当执行完以上的指令，你就可以在浏览器输入你的公网ip访问了。界面如下：</p>
+make &amp;&amp; make install</code></pre><h4 id="2-6启动Nginx"><a href="#2-6启动Nginx" class="headerlink" title="2.6启动Nginx"></a>2.6启动Nginx</h4><pre><code>/usr/local/nginx/sbin/nginx</code></pre><p>当执行完以上的指令，你就可以在浏览器输入你的公网ip访问了。界面如下：</p>
 <p><img src="https://wx2.sbimg.cn/2020/05/29/55.png" alt="55.png"></p>
-<h3 id="3-安装Git以及Node-js"><a href="#3-安装Git以及Node-js" class="headerlink" title="3.安装Git以及Node.js"></a>3.安装Git以及Node.js</h3><h4 id="3-1安装Node-js"><a href="#3-1安装Node-js" class="headerlink" title="3.1安装Node.js"></a>3.1安装Node.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x | bash -</span><br><span class="line"></span><br><span class="line">yum install -y nodejs</span><br></pre></td></tr></table></figure>
+<h3 id="3-安装Git以及Node-js"><a href="#3-安装Git以及Node-js" class="headerlink" title="3.安装Git以及Node.js"></a>3.安装Git以及Node.js</h3><h4 id="3-1安装Node-js"><a href="#3-1安装Node-js" class="headerlink" title="3.1安装Node.js"></a>3.1安装Node.js</h4><pre><code>curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 
-<p>这是两条指令，可以一起复制进去。</p>
+yum install -y nodejs</code></pre><p>这是两条指令，可以一起复制进去。</p>
 <p>通过输入以下指令查看是否安装成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<pre><code>node -v
 
-<p>如果显示以下内容代表安装成功</p>
+npm -v</code></pre><p>如果显示以下内容代表安装成功</p>
 <p><a href="https://sbimg.cn/image/k2do8" target="_blank" rel="noopener"><img src="https://wx2.sbimg.cn/2020/05/29/66.png" alt="66.png"></a></p>
-<h4 id="3-2安装Git及配置仓库"><a href="#3-2安装Git及配置仓库" class="headerlink" title="3.2安装Git及配置仓库"></a>3.2安装Git及配置仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br><span class="line"></span><br><span class="line">adduser git</span><br><span class="line"></span><br><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="3-2安装Git及配置仓库"><a href="#3-2安装Git及配置仓库" class="headerlink" title="3.2安装Git及配置仓库"></a>3.2安装Git及配置仓库</h4><pre><code>yum install git
 
-<p>用WinSCP打开  /etc/sudoers这个文件，在倒数16行的root    ALL=(ALL)     ALL下面一行加上git    ALL=(ALL)     ALL</p>
+adduser git
+
+chmod 740 /etc/sudoers
+</code></pre><p>用WinSCP打开  /etc/sudoers这个文件，在倒数16行的root    ALL=(ALL)     ALL下面一行加上git    ALL=(ALL)     ALL</p>
 <p><img src="https://wx1.sbimg.cn/2020/05/29/22.png" alt="22.png"></p>
-<h4 id="3-3更改文件夹的权限"><a href="#3-3更改文件夹的权限" class="headerlink" title="3.3更改文件夹的权限"></a>3.3更改文件夹的权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 &#x2F;etc&#x2F;sudoer</span><br><span class="line"></span><br><span class="line">sudo passwd git</span><br></pre></td></tr></table></figure>
+<h4 id="3-3更改文件夹的权限"><a href="#3-3更改文件夹的权限" class="headerlink" title="3.3更改文件夹的权限"></a>3.3更改文件夹的权限</h4><pre><code>chmod 400 /etc/sudoer
 
+sudo passwd git</code></pre><h4 id="3-4切换git用户and创建密钥"><a href="#3-4切换git用户and创建密钥" class="headerlink" title="3.4切换git用户and创建密钥"></a>3.4切换git用户and创建密钥</h4><pre><code>su git
 
+cd ~
 
-<h4 id="3-4切换git用户and创建密钥"><a href="#3-4切换git用户and创建密钥" class="headerlink" title="3.4切换git用户and创建密钥"></a>3.4切换git用户and创建密钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br><span class="line"></span><br><span class="line">cd ~</span><br><span class="line"></span><br><span class="line">mkdir .ssh</span><br><span class="line"></span><br><span class="line">cd .ssh</span><br><span class="line"></span><br><span class="line">vi authorized_keys</span><br></pre></td></tr></table></figure>
+mkdir .ssh
 
-<p>执行vi authorized_keys后，在SecureCRT8.0中复制粘贴你的密钥（之前github、码云、coding）所复制粘贴的id_rsa.pub  文件的内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line"></span><br><span class="line">chmod 700 ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
+cd .ssh
 
+vi authorized_keys
+</code></pre><p>执行vi authorized_keys后，在SecureCRT8.0中复制粘贴你的密钥（之前github、码云、coding）所复制粘贴的id_rsa.pub  文件的内容。</p>
+<pre><code>chmod 600 ~/.ssh/authorized_keys
 
+chmod 700 ~/.ssh</code></pre><h4 id="3-5-创建git仓库"><a href="#3-5-创建git仓库" class="headerlink" title="3.5 创建git仓库"></a>3.5 创建git仓库</h4><pre><code>cd ~
 
-<h4 id="3-5-创建git仓库"><a href="#3-5-创建git仓库" class="headerlink" title="3.5 创建git仓库"></a>3.5 创建git仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line"></span><br><span class="line">git init --bare blog.git</span><br><span class="line"></span><br><span class="line">vi ~&#x2F;blog.git&#x2F;hooks&#x2F;post-receive</span><br><span class="line"></span><br><span class="line">在里面输入</span><br><span class="line">git --work-tree&#x3D;&#x2F;home&#x2F;www&#x2F;website --git-dir&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git checkout -f</span><br><span class="line">输入完成后，按ESC，再输入:wq即可</span><br><span class="line"></span><br><span class="line">chmod +x ~&#x2F;blog.git&#x2F;hooks&#x2F;post-receive</span><br></pre></td></tr></table></figure>
+git init --bare blog.git
 
-<p>特别注意，以上的指令都需要在su git之后执行，如果重连了要重新执行su git指令</p>
-<h4 id="3-6-新建一个website文件夹"><a href="#3-6-新建一个website文件夹" class="headerlink" title="3.6 新建一个website文件夹"></a>3.6 新建一个website文件夹</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">输入密码</span><br><span class="line"></span><br><span class="line">cd &#x2F;home</span><br><span class="line"></span><br><span class="line">mkdir www</span><br><span class="line"></span><br><span class="line">cd www</span><br><span class="line"></span><br><span class="line">mkdir website</span><br><span class="line"></span><br><span class="line">chmod 777 &#x2F;home&#x2F;www&#x2F;website</span><br><span class="line"></span><br><span class="line">chmod 777 &#x2F;home&#x2F;www</span><br></pre></td></tr></table></figure>
+vi ~/blog.git/hooks/post-receive
 
+在里面输入
+git --work-tree=/home/www/website --git-dir=/home/git/blog.git checkout -f
+输入完成后，按ESC，再输入:wq即可
 
+chmod +x ~/blog.git/hooks/post-receive
+</code></pre><p>特别注意，以上的指令都需要在su git之后执行，如果重连了要重新执行su git指令</p>
+<h4 id="3-6-新建一个website文件夹"><a href="#3-6-新建一个website文件夹" class="headerlink" title="3.6 新建一个website文件夹"></a>3.6 新建一个website文件夹</h4><pre><code>su root
 
-<h4 id="3-7本地电脑连接"><a href="#3-7本地电脑连接" class="headerlink" title="3.7本地电脑连接"></a>3.7本地电脑连接</h4><p>Win10的搜索框内输入cmd，打开cmd，输入下面的指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@你的公网IP</span><br></pre></td></tr></table></figure>
+输入密码
 
-<p>当显示</p>
+cd /home
+
+mkdir www
+
+cd www
+
+mkdir website
+
+chmod 777 /home/www/website
+
+chmod 777 /home/www</code></pre><h4 id="3-7本地电脑连接"><a href="#3-7本地电脑连接" class="headerlink" title="3.7本地电脑连接"></a>3.7本地电脑连接</h4><p>Win10的搜索框内输入cmd，打开cmd，输入下面的指令</p>
+<pre><code>ssh -v git@你的公网IP</code></pre><p>当显示</p>
 <p>Welcome to Alibaba Cloud Elastic Compute Service !  说明你成功连接了</p>
 <h4 id="3-8修改配置文件server"><a href="#3-8修改配置文件server" class="headerlink" title="3.8修改配置文件server"></a>3.8修改配置文件server</h4><p>使得nginx指向的网站，是我们上面设定的/home/www/website中的网站</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf</span><br><span class="line"></span><br><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
+<pre><code>cd /usr/local/nginx/conf
 
-
-
-<p>修改root为 /home/www/website</p>
+vim nginx.conf</code></pre><p>修改root为 /home/www/website</p>
 <p><img src="https://wx1.sbimg.cn/2020/05/29/77.png" alt="77.png"></p>
 <h4 id="3-9修改本地配置文件"><a href="#3-9修改本地配置文件" class="headerlink" title="3.9修改本地配置文件"></a>3.9修改本地配置文件</h4><p>打开你本地的博客的根目录下的_config.yml，移动到底部，修改repo</p>
 <p><img src="https://wx1.sbimg.cn/2020/05/29/88.png" alt="88.png"></p>
 <p>repo: git@你的公网IP:/home/git/blog.git</p>
 <h4 id="3-10写入启动脚本"><a href="#3-10写入启动脚本" class="headerlink" title="3.10写入启动脚本"></a>3.10写入启动脚本</h4><p>在/etc/init.d/路径下添加脚本文件，名称为nginx，内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Startup script for the nginx Web Server</span><br><span class="line">#chkconfig: 2345 85 15</span><br><span class="line">nginx&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx</span><br><span class="line">conf&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</span><br><span class="line">case $1 in </span><br><span class="line">start)</span><br><span class="line">echo -n &quot;Starting Nginx&quot;</span><br><span class="line">$nginx -c $conf</span><br><span class="line">echo &quot; done.&quot;</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line">echo -n &quot;Stopping Nginx&quot;</span><br><span class="line">killall -9 nginx</span><br><span class="line">echo &quot; done.&quot;</span><br><span class="line">;;</span><br><span class="line">test)</span><br><span class="line">$nginx -t -c $conf</span><br><span class="line">echo &quot;Success.&quot;</span><br><span class="line">;;</span><br><span class="line">reload)</span><br><span class="line">echo -n &quot;Reloading Nginx&quot;</span><br><span class="line">ps auxww | grep nginx | grep master | awk &#39;&#123;print $2&#125;&#39; | xargs kill -HUP</span><br><span class="line">echo &quot; done.&quot;</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line">$nginx -s reload</span><br><span class="line">echo &quot;reload done.&quot;</span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">echo &quot;Usage: $0 &#123;start|restart|reload|stop|test|show&#125;&quot;</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-<p>然后执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x nginx</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="3-11重启Nginx"><a href="#3-11重启Nginx" class="headerlink" title="3.11重启Nginx"></a>3.11重启Nginx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx reload</span><br></pre></td></tr></table></figure>
-
-
-
-<p>大功告成！！！</p>
+<pre><code>#!/bin/bash
+#Startup script for the nginx Web Server
+#chkconfig: 2345 85 15
+nginx=/usr/local/nginx/sbin/nginx
+conf=/usr/local/nginx/conf/nginx.conf
+case $1 in 
+start)
+echo -n &quot;Starting Nginx&quot;
+$nginx -c $conf
+echo &quot; done.&quot;
+;;
+stop)
+echo -n &quot;Stopping Nginx&quot;
+killall -9 nginx
+echo &quot; done.&quot;
+;;
+test)
+$nginx -t -c $conf
+echo &quot;Success.&quot;
+;;
+reload)
+echo -n &quot;Reloading Nginx&quot;
+ps auxww | grep nginx | grep master | awk &#39;{print $2}&#39; | xargs kill -HUP
+echo &quot; done.&quot;
+;;
+restart)
+$nginx -s reload
+echo &quot;reload done.&quot;
+;;
+*)
+echo &quot;Usage: $0 {start|restart|reload|stop|test|show}&quot;
+;;
+esac</code></pre><p>然后执行</p>
+<pre><code>chmod +x nginx</code></pre><h4 id="3-11重启Nginx"><a href="#3-11重启Nginx" class="headerlink" title="3.11重启Nginx"></a>3.11重启Nginx</h4><pre><code>service nginx reload</code></pre><p>大功告成！！！</p>
 <p>你的网站就成功部署到云服务器上啦。你可以访问你的公网IP查看你的网站啦！！！</p>
 
             </div>
@@ -1380,7 +1427,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.6k</span>&nbsp;字
+                class="white-color">1.5k</span>&nbsp;字
             
             
             
